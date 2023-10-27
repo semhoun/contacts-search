@@ -2,6 +2,8 @@ const express = require('express')
 const axios = require('axios')
 const client = require('../elasticsearch/client')
 
+const movies = require('./movies.json')
+
 const moviesRouter = express.Router()
 
 moviesRouter.get('/', async (request, response) => {
@@ -9,13 +11,9 @@ moviesRouter.get('/', async (request, response) => {
   try {
     console.log('Processing ...')
 
-    const movies = await axios.get(
-      `${process.env.IMDB_URL}/${process.env.API_KEY}`
-    )
-
     console.log('Data retrieved successfuly')
 
-    const results = movies.data.items
+    const results = movies.items
 
     console.log('Starting data indexation ...')
 

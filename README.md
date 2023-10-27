@@ -103,67 +103,68 @@ Follow these steps to get the project locally on your machine.
   ```sh
   PUT movies
   {
-      "mappings": {
-      "properties": {
-          "contentRating": {
-              "type": "text",
-              "fields": {
-                  "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
-                  }
+     "mappings":{
+        "properties":{
+           "contentRating":{
+              "type":"text",
+              "fields":{
+                 "keyword":{
+                    "type":"keyword",
+                    "ignore_above":256
+                 }
               }
-          },
-          "directors": {
-              "type": "text",
-              "fields": {
-                  "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
-                  }
+           },
+           "directors":{
+              "type":"text",
+              "fields":{
+                 "keyword":{
+                    "type":"keyword",
+                    "ignore_above":256
+                 }
               }
-          },
-          "genres": {
-              "type": "keyword"
-          },
-          "imDbRating": {
-              "type": "float"
-          },
-          "imDbRatingCount": {
-              "type": "integer"
-          },
-          "image": {
-              "type": "text",
-              "fields": {
-                  "keyword": {
-                      "type": "keyword"
-                  }
+           },
+           "genres":{
+              "type":"keyword"
+           },
+           "imDbRating":{
+              "type":"float"
+           },
+           "imDbRatingCount":{
+              "type":"integer"
+           },
+           "image":{
+              "type":"text",
+              "fields":{
+                 "keyword":{
+                    "type":"keyword"
+                 }
               }
-          },
-          "plot": {
-              "type": "text"
-          },
-          "runtimeMins": {
-              "type": "integer"
-          },
-          "stars": {
-              "type": "text",
-                  "fields": {
-                      "keyword": {
-                          "type": "keyword"
-                      }
+           },
+           "plot":{
+              "type":"text"
+           },
+           "runtimeMins":{
+              "type":"integer"
+           },
+           "stars":{
+              "type":"text",
+              "fields":{
+                 "keyword":{
+                    "type":"keyword"
+                 }
               }
-          },
-          "title": {
-              "type": "text",
-              "fields": {
-                  "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
-                  }
+           },
+           "title":{
+              "type":"text",
+              "fields":{
+                 "keyword":{
+                    "type":"keyword",
+                    "ignore_above":256
+                 }
               }
-          }
-      }
+           }
+        }
+     }
   }
   ```
 
@@ -172,43 +173,43 @@ Follow these steps to get the project locally on your machine.
   ```sh
   PUT _ingest/pipeline/movies_pipeline
   {
-    "processors": [
-          {
-              "remove": {
-                  "field": [
-                      "id",
-                      "title",
-                      "year",
-                      "releaseState",
-                      "metacriticRating",
-                      "genreList",
-                      "directorList",
-                      "starList",
-                      "runtimeStr"
-                  ],
-                  "ignore_missing": true
-              }
-          },
-          {
-              "rename": {
-                  "field": "fullTitle",
-                  "target_field": "title"
-              }
-          },
-          {
-              "trim": {
-                  "field": "genres",
-                  "ignore_missing": true
-              }
-          },
-          {
-              "split": {
-                  "field": "genres",
-                  "separator": ",",
-                  "ignore_missing": true
-              }
-          }
-      ]
+     "processors":[
+        {
+           "remove":{
+              "field":[
+                 "id",
+                 "title",
+                 "year",
+                 "releaseState",
+                 "metacriticRating",
+                 "genreList",
+                 "directorList",
+                 "starList",
+                 "runtimeStr"
+              ],
+              "ignore_missing":true
+           }
+        },
+        {
+           "rename":{
+              "field":"fullTitle",
+              "target_field":"title"
+           }
+        },
+        {
+           "trim":{
+              "field":"genres",
+              "ignore_missing":true
+           }
+        },
+        {
+           "split":{
+              "field":"genres",
+              "separator":",",
+              "ignore_missing":true
+           }
+        }
+     ]
   }
   ```
 

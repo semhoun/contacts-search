@@ -51,6 +51,7 @@ services:
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - bootstrap.memory_lock=true
       - discovery.type=single-node
+      - xpack.ml.enabled=false
       - xpack.security.enabled=true
       - xpack.security.http.ssl.enabled=true
       - xpack.security.http.ssl.key=certs/esnode1/esnode1.key
@@ -83,6 +84,36 @@ services:
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+
+  backend:
+    depends_on:
+      - esnode1
+    image: node:19
+    volumes:
+      - ./backend:/app
+    ports:
+      - 5602:3001
+    command: >
+      bash -c '
+      cd /app;
+      yarn;
+      yarn run dev
+      '
+  frontend:
+    depends_on:
+      - esnode1
+    image: node:19
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 5603:3000
+    command: >
+      bash -c '
+      cd /app;
+      yarn;
+      yarn run start
+      '
+
 
 volumes:
   certs:
