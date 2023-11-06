@@ -1,41 +1,8 @@
-<div align="center">
-<a name="readme-top"></a>
-
 # Contact Search App
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#application">Application</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
 It's a movie search application that indexes data from the csv-generator to a local deployment of Elasticsearch made using Docker containers, all orchestrated by a PHP server.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
 
 ## Getting Started
 
@@ -84,7 +51,3 @@ Follow these steps to get the project locally on your machine.
 ## Application
 
 http://localhost:5603/
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
