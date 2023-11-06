@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
-import { categories } from '../utils/categories'
+import { professions } from '../utils/professions'
 
-const CheckBoxes = ({ setCheckedCategories }) => {
+const CheckBoxes = ({ setCheckedProfessions }) => {
   const [checkedState, setCheckedState] = useState(
-    new Array(categories.length).fill(false)
+    new Array(professions.length).fill(false)
   )
 
   const handleOnChange = (position) => {
@@ -18,17 +18,17 @@ const CheckBoxes = ({ setCheckedCategories }) => {
 
     updatedCheckedState.map((currentVal, index) => {
       if (currentVal) {
-        return checked.push(categories[index])
+        return checked.push(professions[index])
       }
       return null
     })
 
-    setCheckedCategories(checked)
+    setCheckedProfessions(checked)
   }
 
   return (
     <ul className="grid grid-cols-auto-fill gap-4 my-3 text-white">
-      {categories.map((category, index) => {
+      {professions.map((profession, index) => {
         return (
           <li key={index}>
             <div className="toppings-list-item">
@@ -36,13 +36,13 @@ const CheckBoxes = ({ setCheckedCategories }) => {
                 <input
                   type="checkbox"
                   id={`custom-checkbox-${index}`}
-                  name={category}
-                  value={category}
+                  name={profession}
+                  value={profession}
                   checked={checkedState[index]}
                   onChange={() => handleOnChange(index)}
                   required
                 />
-                <label htmlFor={`custom-checkbox-${index}`}>{category}</label>
+                <label htmlFor={`custom-checkbox-${index}`}>{profession}</label>
               </div>
             </div>
           </li>

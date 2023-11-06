@@ -88,17 +88,15 @@ services:
   backend:
     depends_on:
       - esnode1
-    image: node:19
+    image: semhoun/webserver
+    environment:
+      - EXTENDCLASS_API_KEY=${EXTENDCLASS_API_KEY}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     volumes:
-      - ./backend:/app
+      - ./backend:/www
     ports:
-      - 5602:3001
-    command: >
-      bash -c '
-      cd /app;
-      yarn;
-      yarn run dev
-      '
+      - 5602:80
+
   frontend:
     depends_on:
       - esnode1
@@ -114,7 +112,6 @@ services:
       yarn run start
       '
 
-
 volumes:
   certs:
     driver: local
@@ -122,3 +119,9 @@ volumes:
     driver: local
   kibana-data:
     driver: local
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1460

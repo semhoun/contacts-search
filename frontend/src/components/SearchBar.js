@@ -4,8 +4,6 @@ import React from 'react'
 const SearchBar = ({
   searchQuery,
   setSearchQuery,
-  sortBy,
-  setSortBy,
   handleSearch,
 }) => {
   return (
@@ -27,27 +25,15 @@ const SearchBar = ({
         <input
           type="search"
           name="searchQuery"
-          placeholder="Search for a movie"
+          placeholder="Search for a contact"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
         />
-        <div className="select">
-          <select
-            name="sortbBy"
-            className="text-sm outline-none p-2 focus:outline-none bg-transparent"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value={''}>Sort By IMDb rating</option>
-            <option value="asc">Ascendant</option>
-            <option value="desc">Descendant</option>
-          </select>
-        </div>
         <button
           className="h-[50px] p-3 bg-blue-400 text-white rounded"
           onClick={handleSearch}
-        >
+		>
           Submit
         </button>
       </div>

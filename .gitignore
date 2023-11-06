@@ -1,0 +1,3 @@
+backend/ca.crt
+backend/vendor/
+.env

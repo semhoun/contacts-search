@@ -2,18 +2,17 @@
 import axios from 'axios'
 
 const getAll = () => {
-  const request = axios.get('/all')
+  const request = axios.get('/api/all')
   return request.then((response) => response.data)
 }
 
-const search = (title, order, genres) => {
+const search = (text, professions) => {
   const params = {
-    title,
-    order,
-    genres,
+    text,
+    professions,
   }
 
-  const request = axios.get('/api/movies', { params })
+  const request = axios.get('/api/search', { params })
   return request.then((response) => response.data)
 }
 
